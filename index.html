@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Paso a Paso Salsa Cubana</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1 class="brand">Paso <em>a</em> Paso</h1>
+      <p class="tagline">Learn casino, the Cuban way of dancing salsa, one count at a time.</p>
+    </div>
+    <div class="seg role" role="group" aria-label="Your role">
+      <button type="button" id="roleLeader" data-role="leader" aria-pressed="true">I lead</button>
+      <button type="button" id="roleFollower" data-role="follower" aria-pressed="false">I follow</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="stage-col" aria-label="Dance floor">
+      <div class="stage" id="stage">
+        <svg viewBox="0 0 100 100" role="img" aria-labelledby="capName capInfo">
+          <defs>
+            <pattern id="tiles" width="20" height="20" patternUnits="userSpaceOnUse">
+              <rect width="20" height="20" class="t-a"/>
+              <path d="M10 0 20 10 10 20 0 10Z" class="t-b"/>
+              <circle cx="10" cy="10" r="3" class="t-c"/>
+              <circle cx="0" cy="0" r="4" class="t-c"/><circle cx="20" cy="0" r="4" class="t-c"/>
+              <circle cx="0" cy="20" r="4" class="t-c"/><circle cx="20" cy="20" r="4" class="t-c"/>
+            </pattern>
+          </defs>
+          <rect width="100" height="100" fill="url(#tiles)"/>
+          <g id="feetLayer">
+            <text x="50" y="8" text-anchor="middle" class="floor-note">your partner is this way ↑</text>
+            <g transform="translate(50 53) scale(1.6) translate(-50 -55)">
+              <g id="ghosts"></g>
+              <g id="footL" class="footg"><path class="foot"/><text class="foot-t" y="1.6">L</text></g>
+              <g id="footR" class="footg"><path class="foot"/><text class="foot-t" y="1.6">R</text></g>
+            </g>
+          </g>
+          <g id="bodyLayer"><g transform="translate(50 50) scale(1.7) translate(-51 -53)">
+            <polyline id="trailL" class="trail lead"/>
+            <polyline id="trailF" class="trail follow"/>
+            <line id="arm1" class="arm"/>
+            <line id="arm2" class="arm"/>
+            <g id="dancerL" class="dancer lead"><ellipse rx="6.5" ry="3.3"/><path d="M-1.7 -2.4 0 -5.2 1.7 -2.4Z"/><circle r="3.1"/></g>
+            <g id="dancerF" class="dancer follow"><ellipse rx="6.5" ry="3.3"/><path d="M-1.7 -2.4 0 -5.2 1.7 -2.4Z"/><circle r="3.1"/></g>
+            <text id="lblL" class="dancer-t lead">L</text>
+            <text id="lblF" class="dancer-t follow">F</text>
+          </g></g>
+        </svg>
+      </div>
+      <div class="stage-cap">
+        <div>
+          <div class="cap-name" id="capName">Paso básico</div>
+          <div class="cap-info" id="capInfo">Your feet, seen from above</div>
+        </div>
+        <div class="legend" id="legend">
+          <span class="l"><i></i>Leader</span><span class="f"><i></i>Follower</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel-col">
+      <nav class="tabs" aria-label="Sections">
+        <a href="#moves">Moves</a>
+        <a href="#rhythm">Rhythm</a>
+        <a href="#rueda">Rueda</a>
+      </nav>
+
+      <div id="view-moves" class="view">
+        <div class="progress">
+          <span id="progText">0 of 10 learned</span>
+          <span class="prog-bar" aria-hidden="true"><span id="progFill"></span></span>
+        </div>
+        <div id="moveList" class="levels"></div>
+        <article id="moveDetail" class="move"></article>
+      </div>
+
+      <div id="view-rhythm" class="view" hidden>
+        <h2>Hear the band</h2>
+        <p class="prose">Cuban dance music runs in cycles of eight counts. You step on 1, 2, 3 and on 5, 6, 7. Counts 4 and 8 are pauses. Every instrument repeats its own pattern across those eight counts. Switch them on one at a time until you can pick each one out, then find the 1 with your eyes closed.</p>
+        <div class="row">
+          <span class="eyebrow">Clave</span>
+          <div class="seg" role="group" aria-label="Clave direction" id="claveSeg">
+            <button type="button" data-clave="23" aria-pressed="true">2-3 son</button>
+            <button type="button" data-clave="32" aria-pressed="false">3-2 son</button>
+          </div>
+        </div>
+        <div class="grid-wrap">
+          <table class="grid" id="grid" aria-label="Instrument patterns across eight counts"></table>
+        </div>
+        <ul class="listen">
+          <li><b>Clave</b> Five strokes that never change. The side with two strokes and the side with three give the music its push and pull.</li>
+          <li><b>Campana</b> The cowbell. Its low, open tone lands on 1, 3, 5 and 7, so it is the easiest instrument to walk to.</li>
+          <li><b>Conga</b> A dry slap on 2 and 6, then two round open tones on 4 and the &ldquo;and&rdquo; after it. Those two tones lead you straight into 1 and 5.</li>
+          <li><b>Bajo</b> The bass avoids the 1. It plays just before it and lets you fill the downbeat with your step.</li>
+          <li><b>Güiro</b> A long scrape followed by two short ones: the steady engine underneath.</li>
+        </ul>
+        <div class="row" id="presets" aria-label="Tempo presets">
+          <span class="eyebrow">Tempo</span>
+          <button type="button" class="btn" data-bpm="90">Slow drill 90</button>
+          <button type="button" class="btn" data-bpm="120">Practice 120</button>
+          <button type="button" class="btn" data-bpm="150">Son 150</button>
+          <button type="button" class="btn" data-bpm="180">Social 180</button>
+          <button type="button" class="btn" data-bpm="204">Timba 204</button>
+        </div>
+        <div class="tapbox">
+          <h3>Find the 1</h3>
+          <p class="small">Start the music and tap every time you hear count 1. The count display is hidden while you play, so you have to listen.</p>
+          <button type="button" class="tapbtn" id="tapBtn">Tap on 1</button>
+          <div class="tap-result" id="tapResult" aria-live="polite">Press play, then tap.</div>
+          <label class="check"><input type="checkbox" id="blindChk" checked> Hide the counts while I tap</label>
+        </div>
+      </div>
+
+      <div id="view-rueda" class="view" hidden>
+        <h2>Rueda de casino</h2>
+        <p class="prose">Casino is also danced in a wheel: couples in a circle, with one caller shouting figures that everybody dances at the same moment, changing partners as they go. This caller picks from the figures you tick below and calls each one a few counts early, the way a real caller does. Dance guapea until you hear a call.</p>
+        <div class="callbox">
+          <div>
+            <div class="eyebrow">Now dancing</div>
+            <div class="call-now" id="callNow">Guapea</div>
+          </div>
+          <div class="call-next" id="callNext" aria-live="polite">Start the caller to hear the first call.</div>
+          <div class="actions">
+            <button type="button" class="btn primary" id="callerBtn">Start the caller</button>
+            <label class="check"><input type="checkbox" id="voiceChk" checked> Speak the calls aloud</label>
+          </div>
+          <div>
+            <div class="eyebrow">Figures in the wheel</div>
+            <div class="row" id="poolList" style="margin-top:8px"></div>
+          </div>
+        </div>
+        <h3>Calls you will hear in a real rueda</h3>
+        <dl class="glossary">
+          <div><dt>Dame</dt><dd>&ldquo;Give me one.&rdquo; Leaders move to the next follower on their right and bring them across with a dile que no.</dd></div>
+          <div><dt>Dame dos</dt><dd>Leaders skip one follower and take the second.</dd></div>
+          <div><dt>Enchufla</dt><dd>In a wheel, an enchufla ends with the leader walking on to the next follower instead of returning to the same one.</dd></div>
+          <div><dt>Arriba / Abajo</dt><dd>In closed position the whole wheel travels: arriba with leaders walking forward, abajo with leaders walking backward.</dd></div>
+          <div><dt>Un fly</dt><dd>One clap toward the middle of the wheel, like catching a fly ball. The word comes from baseball.</dd></div>
+        </dl>
+        <p class="small">Names and details differ between schools and cities. If your teacher does a figure differently, your teacher is right for that room.</p>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="deck" role="region" aria-label="Player">
+  <div class="deck-in">
+    <div class="counts" id="counts" role="group" aria-label="Counts"></div>
+    <div class="transport">
+      <button type="button" class="play" id="playBtn" aria-label="Play"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="playIcon" d="M8 5v14l11-7z"/></svg></button>
+      <button type="button" class="stepbtn" id="prevBtn" aria-label="Previous count"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button type="button" class="stepbtn" id="nextBtn" aria-label="Next count"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+    <label class="tempo" for="bpm">
+      <span class="tempo-top"><span class="barinfo" id="barInfo">Step through with the arrows</span><output id="bpmOut" for="bpm">120 BPM</output></span>
+      <input type="range" id="bpm" min="80" max="220" step="2" value="120" aria-label="Tempo in beats per minute">
+    </label>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
